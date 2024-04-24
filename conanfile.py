@@ -228,7 +228,7 @@ class FreetypeConan(ConanFile):
 
         libtool_version = load(self, self._libtool_version_txt).strip()
         self.conf_info.define("user.freetype:libtool_version", libtool_version)
-        self.cpp_info.set_property("system_package_version", libtool_version)
+        # self.cpp_info.set_property("system_package_version", libtool_version)
 
         # TODO: to remove in conan v2 once cmake_find_package* & pkg_config generators removed
         # self.cpp_info.set_property("component_version", libtool_version)
