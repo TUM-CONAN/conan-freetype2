@@ -75,6 +75,10 @@ class FreetypeConan(ConanFile):
 
     def build_requirements(self):
         self.tool_requires("meson/1.6.0@camposs/stable")
+        # import pdb;pdb.set_trace()
+        # meson_opts = self.dependencies["meson"].options
+        # if meson_opts.with_system_python:
+        #     self.requires("cpython/[~{}]".format(meson_opts.python_version), run=True, transitive_headers=True, transitive_libs=True)
         if not self.conf.get("tools.gnu:pkg_config", default=False, check_type=str):
             self.tool_requires("pkgconf/2.1.0")
 
