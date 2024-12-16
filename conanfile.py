@@ -19,6 +19,7 @@ required_conan_version = ">=1.53.0"
 
 class FreetypeConan(ConanFile):
     name = "freetype"
+    version = "2.13.3"
     description = "FreeType is a freely available software library to render fonts."
     url = "https://github.com/conan-io/conan-center-index"
     homepage = "https://www.freetype.org"
@@ -66,14 +67,14 @@ class FreetypeConan(ConanFile):
         if self.options.with_png:
             self.requires("libpng/[>=1.6 <2]")
         if self.options.with_zlib:
-            self.requires("zlib/[>=1.2.10 <2]")
+            self.requires("zlib/[>=1.2.10 <2]@camposs/stable")
         if self.options.with_bzip2:
             self.requires("bzip2/1.0.8")
         if self.options.get_safe("with_brotli"):
             self.requires("brotli/1.1.0")
 
     def build_requirements(self):
-        self.tool_requires("meson/1.3.2")
+        self.tool_requires("meson/1.6.0@camposs/stable")
         if not self.conf.get("tools.gnu:pkg_config", default=False, check_type=str):
             self.tool_requires("pkgconf/2.1.0")
 
