@@ -75,6 +75,9 @@ class FreetypeConan(ConanFile):
 
     def build_requirements(self):
         self.tool_requires("meson/1.6.0@camposs/stable")
+        if self.conf.get("user.camp.common:use_custom_python", default=False, check_type=str):
+            pyver = self.conf.get("user.camp.common:use_custom_python", check_type=str)
+            self.tool_requires("cpython/[~{}]@camposs/stable".format(pyver))
         # import pdb;pdb.set_trace()
         # meson_opts = self.dependencies["meson"].options
         # if meson_opts.with_system_python:
